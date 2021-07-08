@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <ul>
+        <li v-for="item in items">
+            {{ item }}
+        </li>
+    </ul>
+
+    <button @click="setOne()"> Modify </button>
+    <button @click="setBisOne()"> Modify Bis </button>
+
+    <hr>
+
+    <ul>
+        <li v-for="(value, key) in user">
+            {{ key + ' : ' + value }}
+        </li>
+    </ul>
+    <button @click="setUserAge()"> Modify age user </button>
+    <button @click="setAddVille()"> Modify add ville </button>
+</div>
+
+<script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            items: [3, 2, 1],
+            user: {
+                age: 27,
+                nom: 'louise'
+            }
+        },
+        methods: {
+            setOne() {
+                Vue.set(this.items, 0, 4)
+            },
+            setBisOne() {
+                this.$set(this.items, 0, 5)
+            },
+            setUserAge() {
+                this.user.ville = 'Lyon';
+                this.user.age = 17;
+            },
+            setAddVille() {
+                Vue.set(this.user, 'ville', 'Lyon');
+            }
+        }
+    })
+</script>
+</body>
+</html>

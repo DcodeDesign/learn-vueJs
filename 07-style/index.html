@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <input placeholder="Entrer color" type="text" v-model="color">
+    <div style="width:200px;height:200px;" v-bind:style="{backgroundColor: color}"></div>
+    <br>
+    <div style="width:200px;height:200px;" v-bind:style="monStyle"></div>
+</div>
+
+<script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            color:''
+        },
+        computed: {
+            monStyle() {
+                return {
+                    backgroundColor: this.color
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

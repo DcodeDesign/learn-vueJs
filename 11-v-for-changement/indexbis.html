@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <ul>
+        <li v-for="(value, key) in personne">
+            {{ key + ' => ' + value }}
+        </li>
+    </ul>
+    <button @click="ajoutDeProp">Ajout d'une propriété</button>
+    <button @click="ajoutDePropAvecSet">Ajout d'une propriété avec $set</button>
+    <button @click="ajoutDePlusieursProprietes">Ajout de plusieurs propriétés</button>
+</div>
+
+<script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            personne: {
+                prenom: 'Paul',
+                nom: 'Dupont',
+                age: 28
+            }
+        },
+        methods: {
+            // La détection des changements ne fonctionne pas
+            ajoutDeProp() {
+                this.personne.travail = "pompier";
+            },
+            // La détection des changements fonctionne
+            ajoutDePropAvecSet() {
+                // nous enlevons l'éventuelle propriété travail car même si
+                // la détection des changements n'a pas fonctionné, la propriété
+                // travail a été ajoutée par ajoutDeProp()
+                delete this.personne.travail;
+                this.$set(this.personne, 'travail', 'pompier');
+            },
+            ajoutDePlusieursProprietes() {
+                this.personne = Object.assign(
+                    {}, this.personne, { travail: 'pompier', femme: 'Paulette' }
+                );
+            }
+        }
+    });
+</script>
+</body>
+</html>

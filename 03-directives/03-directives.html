@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <h1 v-once > {{ title }} </h1>
+    <h1> {{ title }} </h1>
+    <h2> {{ hello() }} </h2>
+    <a v-bind:href="url">Google</a>
+    <p v-html="tag"></p>
+    <hr>
+    <label>
+        v-bind:type
+        <input type="text" v-bind:type="inputType"/>
+    </label>
+    <br>
+    <label>
+        v-on:input
+        <input type="text" v-on:input="userInput(10, $event)"/>
+    </label>
+    <br>
+    <label>
+        v-model
+        <input type="text" v-model:input="inputText"/>
+    </label>
+    <p> Text: {{ inputText }}</p>
+    <hr>
+    <div v-on:click="triggerAlert">
+        v-on:click.stop
+        <div v-on:click.stop="triggerSquare" style="width:200px;height:200px;background-color: red;"></div>
+    </div>
+    <hr>
+    <label>
+        v-on:keydown
+        <input type="text" v-on:keydown="triggerKey"/>
+    </label>
+    <br>
+    <label>
+        v-on:keydown.enter
+        <input type="text" v-on:keydown.enter="triggerKey"/>
+    </label>
+    <br>
+    <div v-on:click="counter++">
+        click {{ counter }} {{ counter * 2 }}
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            inputType: "date",
+            title: 'Hello World',
+            url: 'https://www.google.com/',
+            tag: '<h4>Titre h4</h4>',
+            inputText: '',
+            counter: 0
+        },
+        methods: {
+            hello: function() {
+                return this.title = 'Holla'
+            },
+            userInput(nbr, event) {
+                console.log(nbr, event);
+            },
+            triggerAlert() {
+                alert('hello');
+            },
+            triggerSquare(event) {
+                // event.stopPropagation();
+                alert('Square')
+            },
+            triggerKey() {
+                alert('keydown')
+            }
+        }
+    })
+</script>
+</body>
+</html>

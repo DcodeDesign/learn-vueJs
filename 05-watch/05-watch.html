@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+   <input type="text" v-model="name">
+    <hr>
+    <p>{{ name }}</p>
+    <hr>
+    <p>{{ reverseName }}</p>
+    <hr>
+    <p>{{ reverseName_ }}</p>
+</div>
+
+<script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            name: '',
+            reverseName: ''
+        },
+        methods: {
+
+        },
+        computed: {
+            // Synchrone
+            reverseName_(){
+                return this.name.split('').reverse().join('')
+            }
+        },
+        watch: {
+            // Asynchrone
+            name(value){
+                this.reverseName = value.split('').reverse().join('')
+            }
+        }
+    })
+</script>
+</body>
+</html>

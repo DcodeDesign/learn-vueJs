@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <div v-if="show">
+        <h1> Bonjour </h1>
+    </div>
+    <template v-if="show">
+        <h1> Bonjour </h1>
+    </template>
+    <div v-else>
+        <h1>Au revoir</h1>
+    </div>
+    <button @click="show=!show"> Switch</button>
+
+    <hr>
+
+    <div v-if="display === '1'">
+        <h1>Wow</h1>
+    </div>
+    <div v-else-if="display === '2'">
+        <h1>Hein</h1>
+    </div>
+    <div v-else>
+        <h1>C'est clair</h1>
+    </div>
+    <input type="text" v-model="display">
+
+</div>
+
+<script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            show: true,
+            display:''
+        }
+    })
+</script>
+</body>
+</html>

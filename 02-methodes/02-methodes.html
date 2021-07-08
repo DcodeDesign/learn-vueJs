@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <h1> {{ title }} </h1>
+</div>
+
+<script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            title: 'Hello World',
+        },
+        methods: {
+            hello: function() {
+                return this.title = 'Holla'
+            }
+        }
+    })
+</script>
+</body>
+</html>

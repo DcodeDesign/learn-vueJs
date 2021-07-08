@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <h1> {{ fullname }}</h1>
+    <button v-on:click="counter++"> + </button>
+    <p>{{ counter }}</p>
+
+</div>
+
+<script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            nom: "Dupont",
+            prenom: "Jean",
+            counter: 0
+        },
+        methods: {
+
+        },
+        computed: {
+            /*nomComplet: {
+                get: function () {
+                    return this.prenom + ' ' + this.nom;
+                },
+                set: function (nomComplet) {
+                    let noms = nomComplet.split(' ');
+                    this.prenom = noms[0];
+                    this.nom = noms[noms.length - 1];
+                }
+            },*/
+            fullname: function() {
+                console.log(`${this.nom} ${this.prenom}`);
+                return `${this.nom} ${this.prenom}`;
+            }
+        }
+    })
+</script>
+</body>
+</html>

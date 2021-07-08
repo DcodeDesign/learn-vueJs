@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    <ul>
+        <template v-for="(f, i) in fruits">
+            <li>
+                {{ i }}
+            </li>
+            <li>
+                {{ f }}
+            </li>
+        </template>
+    </ul>
+
+    <ul>
+        <li v-for="(f, i) in fruits">
+            {{ i }} {{ f }}
+        </li>
+    </ul>
+
+    <ul>
+        <li>{{voiture.marque}}</li>
+        <li v-for="(value , key, index) in voiture">
+            {{ key }} {{ value }} ({{index}})
+        </li>
+    </ul>
+
+    <ul>
+        <li v-for="n in 10">
+            {{ n }}
+        </li>
+    </ul>
+
+</div>
+
+<script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            fruits: ['orange', 'pomme', 'kiwi'],
+            voiture: {
+                marque: 'Tesla',
+                vitesse: '250',
+                autonomie: '500'
+            }
+        }
+    })
+</script>
+</body>
+</html>
